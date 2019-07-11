@@ -1,0 +1,12 @@
+class Solution(object):
+    def missingNumber(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        total = 0
+        
+        for number in range(len(nums)):
+            total = total ^ number ^ nums[number]
+        
+        return total ^ len(nums)
