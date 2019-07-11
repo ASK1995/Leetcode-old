@@ -1,0 +1,17 @@
+class Solution:
+    def findContentChildren(self, g: List[int], s: List[int]) -> int:
+        g.sort()
+        s.sort()
+        
+        greedIndex = len(g) - 1
+        sizeIndex = len(s) - 1
+        count = 0
+        
+        while(greedIndex >= 0 and sizeIndex >= 0):
+            if(g[greedIndex] <= s[sizeIndex]):
+                count += 1
+                greedIndex -= 1
+                sizeIndex -= 1
+            elif(g[greedIndex] > s[sizeIndex]):
+                greedIndex -= 1
+        return count
