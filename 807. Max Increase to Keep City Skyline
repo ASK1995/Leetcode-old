@@ -1,0 +1,26 @@
+class Solution:
+    def maxIncreaseKeepingSkyline(self, grid: List[List[int]]) -> int:
+        row_num = len(grid)
+        col_num = len(grid[0])
+        
+        maxR = [0]*row_num
+        maxC = [0]*col_num
+        
+        total = 0
+        for row in range(row_num):
+            for column in range(col_num):
+                if(grid[row][column] > maxR[row]):
+                    maxR[row] = grid[row][column]
+                if(grid[row][column] > maxC[column]):
+                    maxC[column] = grid[row][column]
+                total += grid[row][column]
+                
+        total2 = 0
+        for row in range(row_num):
+            for column in range(col_num):
+                grid[row][column] = min(maxR[row], maxC[column])
+                total2 += grid[row][column]
+        #print(grid)
+        return total2 - total
+        
+        
