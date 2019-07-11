@@ -1,0 +1,31 @@
+from collections import defaultdict
+
+class Solution(object):
+    def romanToInt(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        d = defaultdict(lambda:0)
+        d['I'] = 1
+        d['V'] = 5
+        d['X'] = 10
+        d['L'] = 50
+        d['C'] = 100
+        d['D'] = 500
+        d['M'] = 1000
+    
+        prev = None
+        total = 0
+        for value in s[::-1]:
+            if(prev != None):
+                if(d[value] < d[prev]):
+                    total -= d[value]
+                else:
+                    total += d[value]
+            else:
+                total += d[value]
+                
+            prev = value
+        
+        return total
