@@ -1,56 +1,61 @@
 # Definition for singly-linked list.
-# class ListNode:
+# class ListNode(object):
 #     def __init__(self, x):
 #         self.val = x
 #         self.next = None
 
-class Solution:
-    def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
-        i1 = l1
-        i2 = l2
-        l3 = None
+class Solution(object):
+    def mergeTwoLists(self, l1, l2):
+        """
+        :type l1: ListNode
+        :type l2: ListNode
+        :rtype: ListNode
+        """
         head = None
+        prev = None
         
-        while(i1 != None and i2 != None):
-            if(i1.val > i2.val):
-                if(l3 == None):
-                    l3 = i2
-                    l3.val = i2.val
-                    head = l3
+        while(l1 != None and l2 != None):
+            if(l1.val <= l2.val):
+                if(head == None):
+                    head = l1
+                    prev = head
                 else:
-                    x = i2
-                    l3.next = x 
-                    l3 = x
-                i2 = i2.next
+                    prev.next = l1
+                    prev = l1
+                l1 = l1.next
             else:
-                if(l3 == None):
-                    l3 = i1
-                    l3.val = i1.val
-                    head = l3
+                if(head == None):
+                    head = l2
+                    prev = head
                 else:
-                    x = i1
-                    l3.next = x 
-                    l3 = x
-                i1 = i1.next
+                    prev.next = l2
+                    prev = l2
+                l2 = l2.next
+                    
+        while(l1 != None):
+            if(head == None):
+                head = l1
+                prev = head
+            else:
+                prev.next = l1
+                prev = l1
+            l1 = l1.next
         
-        while(i1 != None):
-            if(l3 == None):
-                l3 = i1
-                l3.val = i1.val
-                head = l3
+        while(l2 != None):
+            if(head == None):
+                head = l2
+                prev = head
             else:
-                x = i1
-                l3.next = x 
-                l3 = x 
-            i1 = i1.next
-        while(i2 != None):
-            if(l3 == None):
-                l3 = i2
-                l3.val = i2.val
-                head = l3
-            else:
-                x = i2
-                l3.next = x 
-                l3 = x 
-            i2 = i2.next
+                prev.next = l2
+                prev = l2
+            l2 = l2.next
+        
+        if(prev == None or head == None):
+            return None
+        
+        prev.next = None
         return head
+
+        
+                
+        
