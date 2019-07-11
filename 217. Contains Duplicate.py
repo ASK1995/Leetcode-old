@@ -1,10 +1,16 @@
 from collections import defaultdict
 
-class Solution:
-    def containsDuplicate(self, nums: List[int]) -> bool:
+class Solution(object):
+    def containsDuplicate(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: bool
+        """
         d = defaultdict(lambda:0)
-        for i in nums:
-            if(d[i] > 0):
+        
+        for number in nums:
+            if(d[number] == 1):
                 return True
-            d[i] += 1
+            d[number] += 1
+            
         return False
