@@ -1,0 +1,16 @@
+from collections import defaultdict
+
+class Solution:
+    def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        d = defaultdict(lambda : 0)
+        res = []
+        
+        for num in nums1:
+            d[num] += 1
+        
+        for num in nums2:
+            if(d[num] >= 1):
+                d[num] -= 1
+                res.append(num)
+        
+        return res
