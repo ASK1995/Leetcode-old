@@ -1,0 +1,15 @@
+class Solution(object):
+    def removeElement(self, nums, val):
+        """
+        :type nums: List[int]
+        :type val: int
+        :rtype: int
+        """
+        index0 = 0
+        
+        for index,value in enumerate(nums):
+            if(value != val):
+                nums[index0] = value
+                index0 += 1
+                
+        return index0
