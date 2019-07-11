@@ -1,19 +1,23 @@
-class Solution:
-    def reverse(self, x: int) -> int:
+class Solution(object):
+    def reverse(self, x):
+        """
+        :type x: int
+        :rtype: int
+        """
         neg = False
         
         if(x < 0):
-            neg = True
             x = -x
+            neg = True
             
-        reversed_int = 0
+        x = str(x)
+        x = x[::-1]
+        x = int(x)
         
-        while(x != 0):
-            reversed_int = reversed_int*10 + x%10
-            x = x//10
-            
-        if(neg):
-            reversed_int *= -1
-        if(reversed_int < (-2)**31 or reversed_int > (2**31) - 1):
+        if(x < -2**31 or x > 2**31 - 1):
             return 0
-        return reversed_int
+        
+        if(neg):
+            return -x
+        return x
+        
