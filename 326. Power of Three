@@ -1,0 +1,14 @@
+class Solution(object):
+    def isPowerOfThree(self, n):
+        """
+        :type n: int
+        :rtype: bool
+        """
+        current = 1
+        
+        while(current < n):
+            current = current*3
+        
+        if(current == n):
+            return True
+        return False
