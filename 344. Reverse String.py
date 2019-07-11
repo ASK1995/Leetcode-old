@@ -1,9 +1,9 @@
-class Solution:
-    def reverseString(self, s: List[str]) -> None:
+class Solution(object):
+    def reverseString(self, s):
         """
-        Do not return anything, modify s in-place instead.
+        :type s: List[str]
+        :rtype: None Do not return anything, modify s in-place instead.
         """
-        for i in range(len(s)//2):
-            s[i],s[len(s)-i-1] = s[len(s)-i-1],s[i]
-        
+        for index in range(len(s)//2):
+            s[index], s[len(s) - index - 1] = s[len(s) - index - 1], s[index]
         
