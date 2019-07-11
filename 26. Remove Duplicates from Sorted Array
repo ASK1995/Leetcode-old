@@ -1,0 +1,21 @@
+class Solution(object):
+    def removeDuplicates(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        prev = None
+        index0 = 0
+        
+        for index,value in enumerate(nums):
+            if(prev != None):
+                if(prev != value):
+                    nums[index0] = value
+                    index0 += 1
+                    
+            else:
+                index0 += 1
+            prev = value
+                
+        return index0
+        
