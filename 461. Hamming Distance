@@ -1,0 +1,34 @@
+class Solution(object):
+    def hammingDistance(self, x, y):
+        """
+        :type x: int
+        :type y: int
+        :rtype: int
+        """
+        xbinary = []
+        ybinary = []
+        
+        while(x!=0):
+            if(x%2 != 0):
+                xbinary.append(1)
+            else:
+                xbinary.append(0)
+            x //= 2
+        
+        while(y!=0):
+            if(y%2 == 0):
+                ybinary.append(0)
+            else:
+                ybinary.append(1)
+            y //= 2
+            
+        while(len(xbinary) > len(ybinary)):
+            ybinary.append(0)
+        while(len(xbinary) < len(ybinary)):
+            xbinary.append(0)
+        
+        count = 0
+        for i in range(len(xbinary)):
+            if(xbinary[i] != ybinary[i]):
+                count += 1
+        return count
