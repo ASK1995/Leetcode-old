@@ -1,0 +1,6 @@
+class Solution:
+    def fixedPoint(self, A: List[int]) -> int:
+        for index in range(len(A)):
+            if(A[index] == index):
+                return index
+        return -1
