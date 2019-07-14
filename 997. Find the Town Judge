@@ -1,0 +1,27 @@
+from collections import defaultdict
+
+class Solution:
+    def findJudge(self, N: int, trust: List[List[int]]) -> int:
+        d1 = defaultdict(lambda : set())
+        d2 = defaultdict(lambda : set())
+        
+        if(N == 1):
+            return 1
+        
+        for [x,y] in trust:
+            d1[x].add(y)
+            d2[y].add(x)
+        
+        count = 0
+        label = -1
+        
+        for key, value in d2.items():
+            if(len(value) == N-1 and d1[key] == set()):
+                count += 1
+                label = key 
+                
+        if(count != 1):
+            return -1 
+        
+        return label
+                
