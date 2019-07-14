@@ -1,0 +1,13 @@
+from collections import defaultdict
+
+class Solution:
+    def anagramMappings(self, A: List[int], B: List[int]) -> List[int]:
+        d = defaultdict(lambda:0)
+        
+        for index, value in enumerate(B):
+            d[value] = index
+        
+        l = []
+        for value in A:
+            l.append(d[value])
+        return l
