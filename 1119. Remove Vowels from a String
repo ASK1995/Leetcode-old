@@ -1,0 +1,9 @@
+class Solution:
+    def removeVowels(self, S: str) -> str:
+        vowels = set(['a', 'e', 'i', 'o', 'u'])
+        res = ""
+        
+        for letter in S:
+            if(letter not in vowels):
+                res += letter
+        return res
