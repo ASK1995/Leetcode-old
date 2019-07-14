@@ -1,0 +1,17 @@
+class Solution:
+    def numberOfDays(self, Y: int, M: int) -> int:
+        
+        if(Y % 4 == 0):
+            if(Y % 100 == 0 and Y % 400 != 0):
+                leap = False
+            else:
+                leap = True
+        else:
+            leap = False
+        
+        x = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+        
+        if(leap and M == 2):
+            return 29
+        else:
+            return x[M-1]
