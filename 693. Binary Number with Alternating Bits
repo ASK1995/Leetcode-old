@@ -1,0 +1,18 @@
+class Solution:
+    def hasAlternatingBits(self, n: int) -> bool:
+        bit1 = None
+        
+        while(n != 0):
+            check = n % 2
+            n //= 2
+            if(bit1 == None):
+                bit1 = (check == 1)
+                continue
+            else:
+                if(bit1 and check == 1):
+                    return False
+                elif(not bit1 and check == 0):
+                    return False
+            bit1 = not bit1
+        
+        return True
