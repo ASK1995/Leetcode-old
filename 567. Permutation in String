@@ -1,0 +1,25 @@
+from collections import defaultdict
+
+class Solution:
+    def checkInclusion(self, s1: str, s2: str) -> bool:
+        if(len(s1) > len(s2)):
+            return False
+        d = defaultdict(lambda : 0)
+        d2 = defaultdict(lambda : 0)
+        
+        for letter in s1:
+            d[letter] += 1
+        
+        for index in range(len(s1) - 1):
+            d2[s2[index]] += 1
+            
+        index0 = 0
+        for index in range(len(s1) - 1, len(s2)):
+            d2[s2[index]] += 1
+            
+            if( all(d[key] == d2[key] for key in d.keys())) :
+                return True
+            d2[s2[index0]] -= 1
+            index0 += 1
+            
+        return False
