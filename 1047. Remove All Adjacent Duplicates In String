@@ -1,0 +1,14 @@
+class Solution:
+    def removeDuplicates(self, S: str) -> str:
+        l = []
+        
+        for element in S:
+            if(len(l) == 0):
+                l.append(element)
+            else:
+                if(l[-1] == element):
+                    l.pop()
+                else:
+                    l.append(element)
+        
+        return ''.join(l)
