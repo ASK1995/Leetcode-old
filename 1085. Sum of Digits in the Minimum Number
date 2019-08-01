@@ -1,0 +1,13 @@
+
+class Solution:
+    def sumOfDigits(self, A: List[int]) -> int:
+        x = min(A)
+        
+        total = 0
+        while(x != 0):
+            total += x%10
+            x //= 10
+        
+        if(total % 2 == 0):
+            return 1
+        return 0
