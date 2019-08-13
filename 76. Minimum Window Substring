@@ -1,0 +1,45 @@
+from collections import defaultdict
+
+class Solution:
+    def minWindow(self, s: str, t: str) -> str:
+        d = defaultdict(lambda : 0)
+        d2 = defaultdict(lambda : 0)
+        s2 = set()
+        
+        window1 = None
+        window2 = None
+        
+        for letter in t:
+            d2[letter] += 1
+            s2.add(letter)
+            
+        index0 = 0
+        min_length = len(s) + 1
+        
+        if(s == t):
+            return s
+        
+        for index, value in enumerate(s):
+            d[value] += 1
+            
+            while(all(d[key] >= d2[key] for key in s2)):
+                if(min_length > index - index0 + 1):
+                    window1 = index0
+                    window2 = index
+                    min_length = index - index0 + 1
+                
+                current = s[index0]
+                if( (current in s2) and (d[current] - 1 < d2[current]) ):
+                    break
+                else:
+                    d[current] -= 1
+                    index0 += 1
+                    
+            
+        res = ""
+        if(window1 == window2 == None):
+            return res
+        for index in range(window1, window2 + 1):
+            res += s[index]
+        
+        return res
