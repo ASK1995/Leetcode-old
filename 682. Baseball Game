@@ -1,0 +1,20 @@
+class Solution:
+    def calPoints(self, ops: List[str]) -> int:
+        s = []
+        total = 0
+        for value in ops:
+            if(value == "C"):
+                total -= s[-1]
+                s.pop()
+            elif(value == "D"):
+                total += s[-1]*2
+                s.append(s[-1]*2)
+            elif(value == "+"):
+                s.append(s[-1] + s[-2])
+                total += s[-1]
+            else:
+                s.append(int(value))
+                total += int(value)
+            
+        return total
+            
