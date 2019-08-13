@@ -1,0 +1,25 @@
+from collections import defaultdict
+
+class Solution:
+    def subdomainVisits(self, cpdomains: List[str]) -> List[str]:
+        d = defaultdict(lambda : 0)
+        
+        for element in cpdomains:
+            number, mail = element.split()
+            number = int(number)
+            mails = set()
+            i = 0
+            while(i != -1):
+                i = mail.find(".", i+1)
+                mails.add(mail[i + 1:])
+                
+            for mail in mails:
+                d[mail] += number
+                
+        res = []
+        
+        for key, value in d.items():
+            res.append(str(value) + " " + key)
+        
+        return res
+        
