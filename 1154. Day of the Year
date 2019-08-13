@@ -1,0 +1,24 @@
+class Solution:
+    def dayOfYear(self, date: str) -> int:
+        year = int(date[:4]) 
+        l1 = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+        l2 = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+        
+        if(year % 400 == 0):
+            l = l2
+        elif(year % 100 == 0):
+            l = l1
+        elif(year % 4 == 0):
+            l = l2
+        else:
+            l = l1
+        
+        month = int(date[5:7])
+        day = int(date[8:10])
+        
+        res = day
+        
+        for i in range(month - 1):
+            res += l[i]
+        
+        return res
