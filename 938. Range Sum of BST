@@ -7,19 +7,9 @@
 
 class Solution:
     def rangeSumBST(self, root: TreeNode, L: int, R: int) -> int:
-        q = []
-        q.append(root)
-        total = 0
-        
-        while(len(q) != 0):
-            if(q[0].val >= L and q[0].val <= R):
-                total += q[0].val
-            if(q[0].left != None):
-                q.append(q[0].left)
-            if(q[0].right != None):
-                q.append(q[0].right)    
-            q.pop(0)
-            
-        return total
-        
-            
+        if(root == None):
+            return 0
+        if(root.val >= L and root.val <= R):
+            return root.val + self.rangeSumBST(root.left, L, R) + self.rangeSumBST(root.right, L, R)
+        else:   
+            return self.rangeSumBST(root.left, L, R) + self.rangeSumBST(root.right, L, R)
