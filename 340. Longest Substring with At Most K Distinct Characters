@@ -4,18 +4,18 @@ class Solution:
     def lengthOfLongestSubstringKDistinct(self, s: str, k: int) -> int:
         if(k == 0):
             return 0
+        
         d = defaultdict(lambda : 0)
         index0 = 0
         current_max = 0
         
         for index, letter in enumerate(s):
-            if( (d[letter] == 0) and (len(d) >= k) ):
-                while(len(d) > k):
-                    d[s[index0]] -= 1
-                    if(d[s[index0]] == 0):
-                        del d[s[index0]]
-                    index0 += 1
             d[letter] += 1
+            while(len(d) > k):
+                d[s[index0]] -= 1
+                if(d[s[index0]] == 0):
+                    del d[s[index0]]
+                index0 += 1
             current_max = max(current_max, index - index0 + 1) 
-                
+            
         return current_max
