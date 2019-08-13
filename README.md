@@ -1,4 +1,4 @@
-# Leetcode (LINKS UNDER REFACTORING, LOOK BACK ON 8/12 FOR FUNCTIONING LINKS)
+# Leetcode (LINKS UNDER REFACTORING, LOOK BACK ON 9/12 FOR FUNCTIONING LINKS)
 Leetcode Solutions in Python
 
 ![Language](https://img.shields.io/badge/Language-Python-orange.svg?logo=Python&logoColor=yellow) ![Update](https://img.shields.io/badge/Update-Weekly-green.svg) ![Progress](https://img.shields.io/badge/progress-N%2F1049-brightgreen.svg) ![License](https://img.shields.io/badge/License-MIT-green.svg) ![Sponsors](https://img.shields.io/badge/Sponsor-0-lightgrey.svg)
