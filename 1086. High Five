@@ -1,0 +1,20 @@
+from collections import defaultdict
+
+class Solution:
+    def highFive(self, items: List[List[int]]) -> List[List[int]]:
+        d = defaultdict(lambda : [])
+        for item in items:
+            student = item[0]
+            marks = item[1]
+            d[student].append(marks)
+        
+        students = [student for student in d.keys()]
+        students.sort()
+        
+        res = []
+        
+        for student in students:
+            d[student].sort(reverse=True)
+            res.append([student, sum(d[student][:5])//5])
+        
+        return res
