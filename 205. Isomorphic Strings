@@ -1,0 +1,21 @@
+from collections import defaultdict
+
+class Solution:
+    def isIsomorphic(self, s: str, t: str) -> bool:
+        d = defaultdict(lambda : 0)
+        s1 = set()
+        
+        for index, letter in enumerate(s):
+            if(d[letter] == 0):
+                if(t[index] not in s1):
+                    d[letter] = t[index]
+                    s1.add(t[index])
+                else:
+                    return False
+            elif(d[letter] == t[index]):
+                continue
+            else:
+                return False
+        
+        return True
+        
